@@ -21,8 +21,8 @@ public class GameActivity extends AppCompatActivity implements View.OnClickListe
     private Button mAnswerButton3;
     private Button mAnswerButton4;
 
-private QuestionBank mQuestionBank;
-private Question mCurrentQuestion;
+    private QuestionBank mQuestionBank;
+    private Question mCurrentQuestion;
 
 
     @Override
@@ -31,11 +31,11 @@ private Question mCurrentQuestion;
         setContentView(R.layout.activity_game);
         mQuestionBank = this.generatorQuestion();
         //wire Widgets
-        mQuestionTextView =findViewById(R.id.activity_game_question_text);
-        mAnswerButton1=findViewById(R.id.activity_game_answer1_btn);
-        mAnswerButton2=findViewById(R.id.activity_game_answer2_btn);
-        mAnswerButton3=findViewById(R.id.activity_game_answer3_btn);
-        mAnswerButton4=findViewById(R.id.activity_game_answer4_btn);
+        mQuestionTextView = findViewById(R.id.activity_game_question_text);
+        mAnswerButton1 = findViewById(R.id.activity_game_answer1_btn);
+        mAnswerButton2 = findViewById(R.id.activity_game_answer2_btn);
+        mAnswerButton3 = findViewById(R.id.activity_game_answer3_btn);
+        mAnswerButton4 = findViewById(R.id.activity_game_answer4_btn);
 
         //use the tag property to 'name' the buttons
         mAnswerButton1.setTag(0);
@@ -53,20 +53,21 @@ private Question mCurrentQuestion;
 
 
     }
+
     @Override
     public void onClick(View view) {
-        int responseIndex =(int)view.getTag();
-        if(responseIndex == mCurrentQuestion.getAnswerIndex()){
+        int responseIndex = (int) view.getTag();
+        if (responseIndex == mCurrentQuestion.getAnswerIndex()) {
             //good answer
-            Toast.makeText(this,"Correct",Toast.LENGTH_SHORT).show();
-        }else {
+            Toast.makeText(this, "Correct", Toast.LENGTH_SHORT).show();
+        } else {
             //wrong answer
             Toast.makeText(this, "Incorrect", Toast.LENGTH_SHORT).show();
         }
     }
 
 
-    private void displayQuestion(final Question question){
+    private void displayQuestion(final Question question) {
         mQuestionTextView.setText(question.getQuestion());
         mAnswerButton1.setText(question.getChoiceList().get(0));
         mAnswerButton2.setText(question.getChoiceList().get(1));
@@ -74,7 +75,7 @@ private Question mCurrentQuestion;
         mAnswerButton4.setText(question.getChoiceList().get(3));
     }
 
-    public QuestionBank generatorQuestion(){
+    public QuestionBank generatorQuestion() {
         Question question1 = new Question("Who is the creator of Android?",
                 Arrays.asList("Andy Rubin",
                         "Steve Wozniak",
@@ -97,8 +98,8 @@ private Question mCurrentQuestion;
                 3);
 
         Question question4 = new Question("How many countries are there in the European Union?",
-        Arrays.asList("15","24","28","32"),
-        2);
+                Arrays.asList("15", "24", "28", "32"),
+                2);
 
         return new QuestionBank(Arrays.asList(question1,
                 question2,
